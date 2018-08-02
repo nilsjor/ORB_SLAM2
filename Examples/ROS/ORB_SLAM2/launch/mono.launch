@@ -1,0 +1,21 @@
+<launch>
+
+  <!-- Set path variables -->
+  <arg name="bagfile" default="$(find orb_slam2)/bag/rgbd_dataset_freiburg1_xyz.bag"/>
+  <arg name="settings" default="$(find orb_slam2)../../../Examples/Monocular/TUM1.yaml"/>
+  <arg name="vocabulary" default="$(find orb_slam2)../../../Vocabulary/ORBvoc.txt"/>
+
+  <!-- Play the bagfile -->
+  <node pkg="rosbag" type="play" name="rosbag" args="--loop $(arg bagfile)" />
+
+  <!-- ORB_SLAM2 Mono -->
+  <node pkg="orb_slam2" type="mono" name="mono" output="screen" args="$(arg vocabulary) $(arg settings)">
+    <remap from="/camera/image_raw" to="/camera/rgb/image_color"/>
+  </node>
+
+  <!-- Visualisation -->
+  <node pkg="image_view" type="image_view" name="image_raw">
+    <remap from="image" to="/camera/rgb/image_color"/>
+  </node>
+
+</launch>

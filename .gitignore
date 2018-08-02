@@ -9,6 +9,7 @@ Examples/ROS/ORB_SLAM2/MonoAR
 Examples/ROS/ORB_SLAM2/RGBD
 Examples/ROS/ORB_SLAM2/Stereo
 Examples/ROS/ORB_SLAM2/build/
+Examples/ROS/ORB_SLAM2/bag/
 Examples/Stereo/stereo_euroc
 Examples/Stereo/stereo_kitti
 KeyFrameTrajectory.txt
