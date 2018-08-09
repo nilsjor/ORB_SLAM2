@@ -26,6 +26,7 @@
 
 #include<ros/ros.h>
 #include <cv_bridge/cv_bridge.h>
+#include <image_transport/image_transport.h>
 
 #include<opencv2/core/core.hpp>
 
@@ -45,7 +46,7 @@ public:
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "Mono");
+    ros::init(argc, argv, "mono_image_grabber");
     ros::start();
 
     if(argc != 3)
@@ -61,7 +62,8 @@ int main(int argc, char **argv)
     ImageGrabber igb(&SLAM);
 
     ros::NodeHandle nodeHandler;
-    ros::Subscriber sub = nodeHandler.subscribe("/camera/image_raw", 1, &ImageGrabber::GrabImage,&igb);
+    image_transport::ImageTransport imgtransport(nodeHandler);
+    image_transport::Subscriber sub = imgtransport.subscribe("/camera/image_raw", 1, &ImageGrabber::GrabImage,&igb);
 
     ros::spin();
 
@@ -92,5 +94,3 @@ void ImageGrabber::GrabImage(const sensor_msgs::ImageConstPtr& msg)
 
     mpSLAM->TrackMonocular(cv_ptr->image,cv_ptr->header.stamp.toSec());
 }
-
-
