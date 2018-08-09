@@ -1,0 +1,16 @@
+<launch>
+
+  <!-- ROS Qt GUI for monitoring nodes and topics-->
+  <node pkg="rqt_gui" type="rqt_gui" name="rqt_gui"
+    args="--perspective-file $(find neonode)/config/rqt_gui.perspective --hide-title" />
+
+  <!-- Raspberry Pi Camera -->
+  <include file="$(find neonode)/launch/webcam.launch" >
+    <arg name="camera_name" value="camera" />
+    <arg name="visualize" value="false"/>
+  </include>
+
+  <!-- ORB_SLAM2 -->
+  <include file="$(find orb_slam2)/launch/raspi.launch" />
+
+</launch>
