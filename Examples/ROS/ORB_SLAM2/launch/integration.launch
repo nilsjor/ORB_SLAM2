@@ -13,4 +13,7 @@
   <!-- ORB_SLAM2 -->
   <include file="$(find orb_slam2)/launch/raspi.launch" />
 
+  <!-- Visualisation-->
+  <node pkg="rviz" type="rviz" name="rviz"/>
+
 </launch>
