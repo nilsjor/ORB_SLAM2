@@ -9,6 +9,8 @@ find_package(catkin REQUIRED COMPONENTS
   cv_bridge
   cmake_modules
   tf
+  pcl_ros
+  pcl_conversions
 )
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -Wall  -O3 -march=native ")
@@ -45,6 +47,7 @@ ${Pangolin_INCLUDE_DIRS}
 ${PROJECT_SOURCE_DIR}
 ${PROJECT_SOURCE_DIR}/../../../
 ${PROJECT_SOURCE_DIR}/../../../include
+include
 )
 
 set(LIBS
@@ -59,6 +62,7 @@ ${PROJECT_SOURCE_DIR}/../../../lib/libORB_SLAM2.so
 
 # Node for monocular camera
 add_executable(mono
+lib/SlamData.cc
 src/ros_mono.cc
 )
 

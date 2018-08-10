@@ -22,4 +22,4 @@ Thirdparty/Pangolin
 Vocabulary/ORBvoc.txt
 build/
 *~
-lib/
+libORB_SLAM2.so

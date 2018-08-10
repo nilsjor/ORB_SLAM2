@@ -116,6 +116,13 @@ public:
     // SaveMap(const string &filename);
     // LoadMap(const string &filename);
 
+    // Get all map points dataand reference map points from mpMap thread
+    // Added by HT94 to display data on RVIZ ROS
+    const vector<MapPoint*> GetmpMapAllMapPoints(void);
+    const vector<MapPoint*> GetmpMapReferenceMapPoints(void);
+    // Get pointer to FrameDrawer thread
+    FrameDrawer* GetpFrameDrawer(void);
+
     // Information from most recent processed frame
     // You can call this right after TrackMonocular (or stereo or RGBD)
     int GetTrackingState();
