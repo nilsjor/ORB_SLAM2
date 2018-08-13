@@ -90,10 +90,6 @@ namespace ORB_SLAM2
 
         tf::Transform new_transform, last_transform;
 
-        Eigen::Matrix3f mInitCam2Ground_R;
-        Eigen::Vector3f mInitCam2Ground_t;
-        Eigen::Matrix4f mTrans_cam2ground;
-
         std::chrono::steady_clock::time_point tp1, tp2, tp3;
 
         void GetCurrentROSPointCloud(sensor_msgs::PointCloud2 &all_point_cloud, sensor_msgs::PointCloud2 &ref_point_cloud);

@@ -16,4 +16,8 @@
   <!-- Visualisation-->
   <node pkg="rviz" type="rviz" name="rviz"/>
 
+  <!-- Rotate the map -90 degs around the x-axis -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="tf_world_map"
+    args="0 0 0 -0.707 0 0 0.707 world map"/>
+
 </launch>
