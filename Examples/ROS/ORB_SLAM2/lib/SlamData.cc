@@ -18,14 +18,14 @@ SlamData::SlamData(ORB_SLAM2::System* pSLAM, ros::NodeHandle *nodeHandler, bool 
     tf::Quaternion q(0,0,0,1);
     last_transform.setRotation(q);
 
-    pose_pub = (*nodeHandler).advertise<geometry_msgs::PoseStamped>("posestamped", 1000);
-    pose_inc_pub = (*nodeHandler).advertise<geometry_msgs::PoseWithCovarianceStamped>("incremental_pose_cov", 1000);
+    pose_pub = (*nodeHandler).advertise<geometry_msgs::PoseStamped>("orb_slam2/pose", 1000);
+    pose_inc_pub = (*nodeHandler).advertise<geometry_msgs::PoseWithCovarianceStamped>("orb_slam2/pose_cov_incr", 1000);
 
-    all_point_cloud_pub = (*nodeHandler).advertise<sensor_msgs::PointCloud2>("point_cloud_all",1);
-    ref_point_cloud_pub = (*nodeHandler).advertise<sensor_msgs::PointCloud2>("point_cloud_ref",1);
+    all_point_cloud_pub = (*nodeHandler).advertise<sensor_msgs::PointCloud2>("orb_slam2/pointcloud_all",1);
+    ref_point_cloud_pub = (*nodeHandler).advertise<sensor_msgs::PointCloud2>("orb_slam2/pointcloud_ref",1);
 
     image_transport::ImageTransport it_((*nodeHandler));
-    current_frame_pub = it_.advertise("current_frame", 1);
+    current_frame_pub = it_.advertise("orb_slam2/current_frame", 1);
 }
 
 void SlamData::SaveTimePoint(TimePointIndex index)
